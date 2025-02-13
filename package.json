@@ -1,0 +1,42 @@
+{
+  "name": "@pomelo_edu/npm_lib_template",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "dev": "vitest dev",
+    "format": "eslint . --fix && prettier -w .",
+    "release": "pnpm test && changelogen --release && npm publish && git push --follow-tags",
+    "test": "vitest run --coverage",
+    "test:types": "tsc --noEmit --skipLibCheck"
+  },
+  "devDependencies": {
+    "@types/node": "22.13.1",
+    "@vitest/coverage-v8": "3.0.5",
+    "changelogen": "0.5.7",
+    "eslint": "9.20.0",
+    "eslint-config-unjs": "0.4.2",
+    "jiti": "2.4.2",
+    "prettier": "3.5.0",
+    "typescript": "5.7.3",
+    "unbuild": "3.3.1",
+    "vitest": "3.0.5"
+  }
+}
